@@ -1,11 +1,11 @@
 #-*- coding: utf-8 -*-
-from __future__ import unicode_literals
 from __future__ import print_function
+from __future__ import unicode_literals
 
-from django.forms import widgets
 from rest_framework import serializers
-from snippets.models import Snippet, LANGUAGE_CHOICES, STYLE_CHOICES
+from django.contrib.auth.models import User
 
+from snippets.models import Snippet
 
 '''
 class SnippetSerializer(serializers.Serializer):
@@ -30,6 +30,14 @@ class SnippetSerializer(serializers.Serializer):
 '''
 
 class SnippetSerializer(serializers.ModelSerializer):
+    owner = serializers.ReadOnlyField(source='owner.username')
+
     class Meta:
         model = Snippet
-        fields = ('id', 'title', 'code', 'linenos', 'language', 'style')
+        fields = ('id', 'title', 'code', 'linenos', 'language', 'style', 'owner')
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'snippets')
