@@ -31,6 +31,18 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES':
+        ('rest_framework.authentication.OAuth2Authentication',
+        'rest_framework.authentication.SessionAuthentication'),
+
+    'DEFAULT_MODEL_SERIALIZER_CLASS':
+        'rest_framework.serializers.ModelSerializer',
+
+    'DEFAULT_PERMISSION_CLASSES':
+        ('rest_framework.permissions.IsAdminUser',)
+}
+
 
 # Application definition
 
@@ -41,6 +53,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'provider',
+    #'provider.oauth2',
     'todo',
 ]
 

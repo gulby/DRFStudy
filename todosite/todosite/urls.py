@@ -19,7 +19,14 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+#from todo import views
 
 urlpatterns = [
+    #url(r'^register/$', views.RegistrationView.as_view()),
+    #url(r'^todos/$', views.TodosView.as_view()),
+    #url(r'^todos/(?P<todo_id>\d+)/$', views.TodosView.as_view()),
+    
+    #url(r'^api-auth/$', include('rest_framework.urls', namespace='rest_framework')),
+
     url(r'^admin/', admin.site.urls),
 ]
