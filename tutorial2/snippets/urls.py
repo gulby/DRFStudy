@@ -1,6 +1,6 @@
 #-*- coding: utf-8 -*-
-from __future__ import unicode_literals
 from __future__ import print_function
+from __future__ import unicode_literals
 
 """tutorial2 URL Configuration
 
@@ -17,12 +17,14 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
-from django.contrib import admin
+from django.conf.urls import url
+from rest_framework.urlpatterns import format_suffix_patterns
 
 from snippets import views
 
 urlpatterns = [
-    url(r'^snippets/$', views.snippet_list),
-    url(r'^snippets/(?P<pk>[0-9]+)/$', views.snippet_detail),
+    url(r'^snippets/$', views.SnippetList.as_view()),
+    url(r'^snippets/(?P<pk>[0-9]+)/$', views.SnippetDetail.as_view()),
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)
