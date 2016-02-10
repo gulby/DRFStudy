@@ -1,3 +1,7 @@
+#-*- coding: utf-8 -*-
+from __future__ import unicode_literals
+from __future__ import print_function
+
 """tutorial2 URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -16,5 +20,9 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+from snippets import views
+
 urlpatterns = [
+    url(r'^snippets/$', views.snippet_list),
+    url(r'^snippets/(?P<pk>[0-9]+)/$', views.snippet_detail),
 ]
