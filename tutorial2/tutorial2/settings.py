@@ -46,6 +46,10 @@ INSTALLED_APPS = [
     'snippets',
 ]
 
+REST_FRAMEWORK = {
+    'PAGE_SIZE': 2,
+}
+
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
